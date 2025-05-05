@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="HexBibliothek" load_steps=44 format=3 uid="uid://1hd32igwxrf4"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxopkg64mn0vy" path="res://addons/HexSystem/Maschen/ebene_gras.mesh" id="1_tpvon"]
+[ext_resource type="ArrayMesh" uid="uid://bd40ot4vty6v0" path="res://addons/HexSystem/Maschen/ebene_wasser.mesh" id="2_tbrce"]
+[ext_resource type="ArrayMesh" uid="uid://ddmwgqescupoq" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_m.mesh" id="3_0vgrl"]
+[ext_resource type="ArrayMesh" uid="uid://bl3o57hst6xjw" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_a.mesh" id="3_3akhg"]
+[ext_resource type="ArrayMesh" uid="uid://c3rrot0wadtoa" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_b.mesh" id="4_1oy0a"]
+[ext_resource type="ArrayMesh" uid="uid://bucnbor0pip8p" path="res://addons/HexSystem/Maschen/seite_fluß.mesh" id="4_25atl"]
+[ext_resource type="ArrayMesh" uid="uid://da78tons37l1h" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_c.mesh" id="5_0l7lh"]
+[ext_resource type="ArrayMesh" uid="uid://do0wivxypp13d" path="res://addons/HexSystem/Maschen/seite_gras.mesh" id="5_us8he"]
+[ext_resource type="ArrayMesh" uid="uid://cpjyrm5kpxdct" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_d.mesh" id="6_8qjgs"]
+[ext_resource type="ArrayMesh" uid="uid://dkyfm1eiqa8go" path="res://addons/HexSystem/Maschen/seite_weg.mesh" id="7_dw71f"]
+[ext_resource type="ArrayMesh" uid="uid://bf3p68ljv1bgk" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_e.mesh" id="7_wxw4m"]
+[ext_resource type="ArrayMesh" uid="uid://c4bx0neyme1wn" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_f.mesh" id="8_wkjr1"]
+[ext_resource type="ArrayMesh" uid="uid://cdninih8jm4m6" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_h.mesh" id="9_mswtp"]
+[ext_resource type="ArrayMesh" uid="uid://cot3sm7iaflaw" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_g.mesh" id="9_wq77x"]
+[ext_resource type="ArrayMesh" uid="uid://cyu0rwyhnx4xm" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_i.mesh" id="10_cto3b"]
+[ext_resource type="ArrayMesh" uid="uid://iw44e5ngfatb" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_j.mesh" id="11_xlbt4"]
+[ext_resource type="ArrayMesh" uid="uid://dq0hh3uur84jo" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_k.mesh" id="12_p5s6m"]
+[ext_resource type="ArrayMesh" uid="uid://dd7w47pr2u6fo" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_l.mesh" id="13_7ipbu"]
+[ext_resource type="ArrayMesh" uid="uid://cg3tpy4staxmy" path="res://addons/HexSystem/Maschen/ebene_kreuzung/ebene_kreuzung_fluß_weg.mesh" id="14_vf4wp"]
+[ext_resource type="ArrayMesh" uid="uid://rqjqe4quqidh" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_0.mesh" id="15_baqyc"]
+[ext_resource type="ArrayMesh" uid="uid://c4b4o7cl5sys6" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_1.mesh" id="16_85bfp"]
+[ext_resource type="ArrayMesh" uid="uid://cqqossh0fk2mq" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_2.mesh" id="17_08hoi"]
+[ext_resource type="ArrayMesh" uid="uid://np4inv30flj8" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_3.mesh" id="18_16j7m"]
+[ext_resource type="ArrayMesh" uid="uid://cdkvwicc4pk0v" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_4.mesh" id="19_djw3o"]
+[ext_resource type="Script" uid="uid://cwghc5f5qy4av" path="res://addons/HexSystem/Skripte/HexBibliothek_resource_skript.gd" id="20_tsm8w"]
+[ext_resource type="Material" uid="uid://viyrt8m68psc" path="res://addons/HexSystem/Materialien/hex_kaykit_material.tres" id="21_h0ubq"]
+[ext_resource type="ArrayMesh" uid="uid://dt3e57t1wh0jg" path="res://addons/HexSystem/Maschen/seite_fluß_untergrund.mesh" id="23_he7gs"]
+[ext_resource type="ArrayMesh" uid="uid://syn40lsejs28" path="res://addons/HexSystem/Maschen/seite_gras_untergrund.mesh" id="23_tsm8w"]
+[ext_resource type="ArrayMesh" uid="uid://gyhhjesxbeva" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_a.mesh" id="25_yxjp8"]
+[ext_resource type="ArrayMesh" uid="uid://bsxdif1nmaqu6" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_b.mesh" id="26_pirva"]
+[ext_resource type="ArrayMesh" uid="uid://cb0iqc5t71qwg" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_c.mesh" id="27_u526e"]
+[ext_resource type="ArrayMesh" uid="uid://857ywvvir2mo" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_d.mesh" id="28_1kkkx"]
+[ext_resource type="ArrayMesh" uid="uid://cyr44sx51ieb5" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_e.mesh" id="29_1h2t0"]
+[ext_resource type="ArrayMesh" uid="uid://c3wtlap78uyl0" path="res://addons/HexSystem/Maschen/seite_weg_untergrund.mesh" id="29_pdkxl"]
+[ext_resource type="ArrayMesh" uid="uid://6ypwc7sn6l7m" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_f.mesh" id="30_urq2u"]
+[ext_resource type="ArrayMesh" uid="uid://spjqshbcds1v" path="res://addons/HexSystem/Maschen/ebene_kreuzung/ebene_kreuzung_weg_fluß.mesh" id="31_pqrie"]
+[ext_resource type="ArrayMesh" uid="uid://hst8a5uuoqpl" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_g.mesh" id="32_23o51"]
+[ext_resource type="ArrayMesh" uid="uid://blfvaaog3q6cn" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_h.mesh" id="33_15ia0"]
+[ext_resource type="ArrayMesh" uid="uid://c1p8fyhliuqtg" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_i.mesh" id="34_t2jse"]
+[ext_resource type="ArrayMesh" uid="uid://3f7f3eexpofp" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_j.mesh" id="35_hg8tb"]
+[ext_resource type="ArrayMesh" uid="uid://dwdx4usigxjns" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_k.mesh" id="36_avrts"]
+[ext_resource type="ArrayMesh" uid="uid://dlerv6i530gh1" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_l.mesh" id="37_uaqxi"]
+[ext_resource type="ArrayMesh" uid="uid://3ddrqabor4w4" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_m.mesh" id="38_mwbf5"]
+
+[resource]
+script = ExtResource("20_tsm8w")
+material = ExtResource("21_h0ubq")
+"Hexagon_größe" = 2.0
+ebene_gras = ExtResource("1_tpvon")
+ebene_wasser = ExtResource("2_tbrce")
+"küste_0" = ExtResource("15_baqyc")
+"küste_1" = ExtResource("16_85bfp")
+"küste_2" = ExtResource("17_08hoi")
+"küste_3" = ExtResource("18_16j7m")
+"küste_4" = ExtResource("19_djw3o")
+"fluß_a" = ExtResource("3_3akhg")
+"fluß_b" = ExtResource("4_1oy0a")
+"fluß_c" = ExtResource("5_0l7lh")
+"fluß_d" = ExtResource("6_8qjgs")
+"fluß_e" = ExtResource("7_wxw4m")
+"fluß_f" = ExtResource("8_wkjr1")
+"fluß_g" = ExtResource("9_wq77x")
+"fluß_h" = ExtResource("9_mswtp")
+"fluß_i" = ExtResource("10_cto3b")
+"fluß_j" = ExtResource("11_xlbt4")
+"fluß_k" = ExtResource("12_p5s6m")
+"fluß_l" = ExtResource("13_7ipbu")
+"fluß_m" = ExtResource("3_0vgrl")
+weg_a = ExtResource("25_yxjp8")
+weg_b = ExtResource("26_pirva")
+weg_c = ExtResource("27_u526e")
+weg_d = ExtResource("28_1kkkx")
+weg_e = ExtResource("29_1h2t0")
+weg_f = ExtResource("30_urq2u")
+weg_g = ExtResource("32_23o51")
+weg_h = ExtResource("33_15ia0")
+weg_i = ExtResource("34_t2jse")
+weg_j = ExtResource("35_hg8tb")
+weg_k = ExtResource("36_avrts")
+weg_l = ExtResource("37_uaqxi")
+weg_m = ExtResource("38_mwbf5")
+"fluß_weg" = ExtResource("14_vf4wp")
+"weg_fluß" = ExtResource("31_pqrie")
+seite_gras = ExtResource("5_us8he")
+seite_gras_untergrund = ExtResource("23_tsm8w")
+"seite_fluß" = ExtResource("4_25atl")
+"seite_fluß_untergrund" = ExtResource("23_he7gs")
+seite_weg = ExtResource("7_dw71f")
+seite_weg_untergrund = ExtResource("29_pdkxl")
+metadata/_custom_type_script = "uid://cwghc5f5qy4av"

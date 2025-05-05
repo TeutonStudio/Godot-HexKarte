@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="HexWeltErzeuger" load_steps=10 format=3 uid="uid://dwsy843ldcsu1"]
+
+[ext_resource type="Script" uid="uid://2suni00airad" path="res://addons/HexSystem/Manipulatoren/hexpfad_resource_skript.gd" id="1_c0k45"]
+[ext_resource type="Script" uid="uid://blfvavmgj5gfy" path="res://addons/HexSystem/Manipulatoren/hexwelterzeuger_resource_skript.gd" id="2_mksxv"]
+
+[sub_resource type="Resource" id="Resource_rli0b"]
+script = ExtResource("1_c0k45")
+pfad_hexes = Array[Vector2i]([Vector2i(9, 8), Vector2i(9, 11), Vector2i(6, 11), Vector2i(3, 8), Vector2i(3, 5), Vector2i(6, 5)])
+pfad_geschlossen = true
+betroffene = Array[Vector2i]([Vector2i(9, 8), Vector2i(9, 9), Vector2i(9, 10), Vector2i(9, 11), Vector2i(8, 11), Vector2i(7, 11), Vector2i(6, 11), Vector2i(5, 10), Vector2i(4, 9), Vector2i(3, 8), Vector2i(3, 7), Vector2i(3, 6), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 6), Vector2i(8, 7)])
+metadata/_custom_type_script = "uid://2suni00airad"
+
+[sub_resource type="Resource" id="Resource_hac4o"]
+script = ExtResource("1_c0k45")
+pfad_hexes = Array[Vector2i]([Vector2i(12, -9), Vector2i(16, 15), Vector2i(-12, 5)])
+pfad_geschlossen = false
+betroffene = Array[Vector2i]([Vector2i(12, -9), Vector2i(12, -8), Vector2i(12, -7), Vector2i(12, -6), Vector2i(13, -6), Vector2i(13, -5), Vector2i(13, -4), Vector2i(13, -3), Vector2i(13, -2), Vector2i(13, -1), Vector2i(13, 0), Vector2i(14, 0), Vector2i(14, 1), Vector2i(14, 2), Vector2i(14, 3), Vector2i(14, 4), Vector2i(14, 5), Vector2i(14, 6), Vector2i(15, 6), Vector2i(15, 7), Vector2i(15, 8), Vector2i(15, 9), Vector2i(15, 10), Vector2i(15, 11), Vector2i(15, 12), Vector2i(16, 12), Vector2i(16, 13), Vector2i(16, 14), Vector2i(16, 15), Vector2i(15, 15), Vector2i(14, 14), Vector2i(13, 14), Vector2i(12, 14), Vector2i(12, 13), Vector2i(11, 13), Vector2i(10, 13), Vector2i(9, 13), Vector2i(9, 12), Vector2i(8, 12), Vector2i(7, 12), Vector2i(6, 12), Vector2i(6, 11), Vector2i(5, 11), Vector2i(4, 11), Vector2i(3, 10), Vector2i(2, 10), Vector2i(1, 10), Vector2i(0, 9), Vector2i(-1, 9), Vector2i(-2, 9), Vector2i(-2, 8), Vector2i(-3, 8), Vector2i(-4, 8), Vector2i(-5, 8), Vector2i(-5, 7), Vector2i(-6, 7), Vector2i(-7, 7), Vector2i(-8, 7), Vector2i(-8, 6), Vector2i(-9, 6), Vector2i(-10, 6), Vector2i(-11, 5), Vector2i(-12, 5)])
+metadata/_custom_type_script = "uid://2suni00airad"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pw2e2"]
+seed = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v8cei"]
+noise = SubResource("FastNoiseLite_pw2e2")
+
+[sub_resource type="Resource" id="Resource_8x0pr"]
+script = ExtResource("1_c0k45")
+pfad_hexes = Array[Vector2i]([Vector2i(7, -4), Vector2i(-6, -8), Vector2i(1, 1)])
+pfad_geschlossen = false
+betroffene = Array[Vector2i]([Vector2i(7, -4), Vector2i(6, -4), Vector2i(5, -5), Vector2i(4, -5), Vector2i(3, -5), Vector2i(2, -5), Vector2i(2, -6), Vector2i(1, -6), Vector2i(0, -6), Vector2i(-1, -6), Vector2i(-1, -7), Vector2i(-2, -7), Vector2i(-3, -7), Vector2i(-4, -7), Vector2i(-4, -8), Vector2i(-5, -8), Vector2i(-6, -8), Vector2i(-5, -7), Vector2i(-5, -6), Vector2i(-4, -6), Vector2i(-4, -5), Vector2i(-3, -5), Vector2i(-3, -4), Vector2i(-2, -3), Vector2i(-2, -2), Vector2i(-1, -2), Vector2i(-1, -1), Vector2i(0, -1), Vector2i(0, 0), Vector2i(1, 1)])
+metadata/_custom_type_script = "uid://2suni00airad"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c0k45"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mksxv"]
+noise = SubResource("FastNoiseLite_c0k45")
+
+[resource]
+script = ExtResource("2_mksxv")
+welt_radius = 5
+chunk_radius = 3
+"maximale_höhe" = 300
+"höhenkarte" = SubResource("NoiseTexture2D_v8cei")
+"wälder" = SubResource("NoiseTexture2D_mksxv")
+"flüße" = Array[ExtResource("1_c0k45")]([SubResource("Resource_rli0b"), SubResource("Resource_hac4o")])
+wege = Array[ExtResource("1_c0k45")]([SubResource("Resource_8x0pr")])
+metadata/_custom_type_script = "uid://blfvavmgj5gfy"
