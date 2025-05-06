@@ -210,5 +210,7 @@ static func erhalte_richtungen_nach_buchstabe(
 @export var seite_weg_untergrund: Mesh
 
 @export_group("Umgebung")
-@export_subgroup("Natur")
+@export_subgroup("Wald")
 @export var natur_wald_b3: Mesh
+@export var natur_lichtung_b3: Mesh
+@export_subgroup("Gebirge")

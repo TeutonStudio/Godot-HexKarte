@@ -58,9 +58,7 @@ enum VARIANTEN {
 
 enum BIOME {
 	Steppe,
-	Wüste, 
-	Urwald,
-	Gebirge,
+	Wüste,
 	Sumpf,
 }
 

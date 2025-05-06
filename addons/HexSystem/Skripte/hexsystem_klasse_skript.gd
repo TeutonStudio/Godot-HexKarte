@@ -93,45 +93,40 @@ static func erhalte_euler_nach_kubial(
 
 ## Axialechunk Koordinaten umrechung
 static func erhalte_euler_nach_chunk_axial_mit_vektor(
-	axial: Vector2i, radius_chunk: int, hexagon_radius := 1.0,
-) -> Vector3: return erhalte_euler_nach_chunk_axial(axial.x,axial.y,radius_chunk,hexagon_radius)
+	axial: Vector2i, radius_chunk: int, hexagon_breite := 1.0,
+) -> Vector3: return erhalte_euler_nach_chunk_axial(axial.x,axial.y,radius_chunk,hexagon_breite)
 static func erhalte_euler_nach_chunk_axial(
 	linksoben: int, obenrechts: int, 
-	radius_chunk: int, hexagon_radius := 1.0,
+	radius_chunk: int, hexagon_breite := 1.0,
 ) -> Vector3:
-	var ausgabe := Vector3.ZERO
-	
-	var radial := erhalte_radial_nach_axial(linksoben,obenrechts)
-	ausgabe += erhalte_euler_nach_chunk_radial_mit_vektor(radial,radius_chunk,hexagon_radius)
-	
-	return ausgabe
+	var axial := HexSys.erhalte_axial_nach_chunk_axial(linksoben,obenrechts,radius_chunk)
+	return HexSys.erhalte_euler_nach_axial_mit_vektor(axial,hexagon_breite,0)
 
 ## Radialechunk Koordinaten umrechung
 static func erhalte_euler_nach_chunk_radial_mit_vektor(
-	radial: Vector3i, radius_chunk: int, hexagon_radius := 1.0,
+	radial: Vector3i, radius_chunk: int, hexagon_breite := 1.0,
 ) -> Vector3:
-	return erhalte_euler_nach_chunk_radial(radial.x, radial.y, radial.z, radius_chunk, hexagon_radius)
+	return erhalte_euler_nach_chunk_radial(radial.x, radial.y, radial.z, radius_chunk, hexagon_breite)
 static func erhalte_euler_nach_chunk_radial(
 	radius: int, seite: HEX_RICHTUNG, interpoliert: int,
-	radius_chunk: int, hexagon_radius := 1.0,
+	radius_chunk: int, hexagon_breite := 1.0,
 ) -> Vector3:
 	var ausgabe := Vector3.ZERO
 	
-	ausgabe += erhalte_euler_nach_radial(2 * radius_chunk + 1, seite, radius_chunk,0, hexagon_radius) * radius
-	ausgabe += erhalte_euler_nach_radial(2 * radius_chunk + 1, seite + 2, radius_chunk,0, hexagon_radius) * interpoliert
+	ausgabe += erhalte_euler_nach_radial(2 * radius_chunk + 1, seite, radius_chunk,0, hexagon_breite) * radius
+	ausgabe += erhalte_euler_nach_radial(2 * radius_chunk + 1, seite + 2, radius_chunk,0, hexagon_breite) * interpoliert
 	
 	return ausgabe
 
 ## Kubialechunk Koordinaten umrechung
 static func erhalte_euler_nach_chunk_kubial_mit_vektor(
-	
-) -> Vector3: return erhalte_euler_nach_chunk_kubial()
+	kubial: Vector3i, radius_chunk: int, hexagon_breite := 1.0
+) -> Vector3: return erhalte_euler_nach_chunk_kubial(kubial.x,kubial.y,kubial.z,radius_chunk,hexagon_breite)
 static func erhalte_euler_nach_chunk_kubial(
-	
+	obenhinten: int, hintenunten: int, vorne: int, radius_chunk: int, hexagon_breite := 1.0
 ) -> Vector3:
-	var ausgabe := Vector3.ZERO
-	# TODO
-	return ausgabe
+	var axial := HexSys.erhalte_axial_nach_kubial(obenhinten,hintenunten,vorne)
+	return HexSys.erhalte_euler_nach_chunk_axial_mit_vektor(axial,radius_chunk,hexagon_breite)
 
 #endregion
 #endregion
@@ -159,10 +154,6 @@ static func erhalte_axial_richtung(seite: int) -> Vector2i:
 
 ## Axiale Koordinaten aus Euler-Koordinaten berechnen
 static func erhalte_axial_nach_euler_mit_vektor(
-	euler: Vector3, hexagon_radius := 1.0
-) -> Vector2i:
-	return erhalte_axial_nach_euler(euler, hexagon_radius)
-static func erhalte_axial_nach_euler(
 	euler: Vector3, hexagon_radius := 1.0
 ) -> Vector2i:
 	# Basisvektoren für die axialen Richtungen
@@ -200,26 +191,27 @@ static func erhalte_axial_nach_radial(radius: int, seite: HEX_RICHTUNG, interpol
 	return ausgabe
 
 static func erhalte_axial_nach_kubial_mit_vektor(kubial: Vector3i) -> Vector2i:
+	return erhalte_axial_nach_kubial(kubial.x,kubial.y,kubial.z)
+static func erhalte_axial_nach_kubial(
+	obenhinten: int, hintenunten: int, vorne: int,
+) -> Vector2i:
+	var ausgabe := Vector2i.ZERO
+	# TODO 
 	push_warning(warning)
-	return Vector2i.ZERO
+	return ausgabe
 
 #endregion
 #region Chunk Koordinaten
 
-static func erhalte_axial_nach_chunk_radial_mit_vektor(
-	radial: Vector3i, radius_chunk: int,
-) -> Vector2i:
-	return erhalte_axial_nach_chunk_radial(radial.x, radial.y, radial.z, radius_chunk)
-static func erhalte_axial_nach_chunk_radial(
-	radius: int, seite: HexSys.HEX_RICHTUNG, interpoliert: int,
-	radius_chunk: int,
-) -> Vector2i:
-	var ausgabe := Vector2i.ZERO
-	
-	ausgabe += erhalte_axial_nach_radial(2 * radius_chunk + 1, seite, radius_chunk) * radius
-	ausgabe += erhalte_axial_nach_radial(2 * radius_chunk + 1, seite + 2, radius_chunk) * interpoliert
-	
-	return ausgabe
+static func erhalte_axial_nach_chunk_axial_mit_vektor(
+	axial: Vector2i, radius_chunk: int,
+) -> Vector2i: return erhalte_axial_nach_chunk_axial(axial.x,axial.y,radius_chunk)
+static func erhalte_axial_nach_chunk_axial(
+	linksoben: int, obenrechts: int, radius_chunk: int
+) -> Vector2i: 
+	var lo := HexSys.erhalte_axial_nach_radial(2 * radius_chunk + 1, 0, radius_chunk)
+	var ro := HexSys.erhalte_axial_nach_radial(2 * radius_chunk + 1, 2, radius_chunk)
+	return lo * linksoben + ro * obenrechts
 
 static func erhalte_axial_chunk_nach_axial_global_mit_vektor(
 	axial: Vector2i, chunk_radius: int
@@ -255,18 +247,64 @@ static func erhalte_axial_lokal_nach_axial_global(
 	var axial_chunk := HexSys.erhalte_axial_chunk_nach_axial_global(linksoben,obenrechts,chunk_radius)
 	return Vector2i(linksoben, obenrechts) - axial_chunk
 
+#region Axial global
+
+static func erhalte_axial_global_nach_axialpaar(
+	axial_lokal: Vector2i, axial_chunk: Vector2i, 
+	radius_chunk: int,
+) -> Vector2i: return axial_lokal + HexSys.erhalte_axial_nach_chunk_axial_mit_vektor(axial_chunk,radius_chunk)
+
 static func erhalte_axial_global_nach_radialpaar(
 	radial_lokal: Vector3i, radial_chunk: Vector3i, 
 	radius_chunk: int,
 ) -> Vector2i: 
-	var chunk_position := erhalte_axial_nach_chunk_radial_mit_vektor(radial_chunk, radius_chunk)
-	var lokale_position := erhalte_axial_nach_radial_mit_vektor(radial_lokal)
-	
+	var chunk_position := HexSys.erhalte_axial_nach_chunk_radial_mit_vektor(radial_chunk, radius_chunk)
+	var lokale_position := HexSys.erhalte_axial_nach_radial_mit_vektor(radial_lokal)
 	return chunk_position + lokale_position
+
+static func erhalte_axial_global_nach_kubialpaar(
+	kubial_lokal: Vector3i, kubial_chunk: Vector3i, 
+	radius_chunk: int,
+) -> Vector2i: 
+	var chunk_position := HexSys.erhalte_axial_nach_chunk_kubial_mit_vektor(kubial_chunk, radius_chunk)
+	var lokale_position := HexSys.erhalte_axial_nach_kubial_mit_vektor(kubial_lokal)
+	return chunk_position + lokale_position
+
+#endregion
+
+static func erhalte_axial_nach_chunk_radial_mit_vektor(
+	radial: Vector3i, radius_chunk: int,
+) -> Vector2i:
+	return erhalte_axial_nach_chunk_radial(radial.x, radial.y, radial.z, radius_chunk)
+static func erhalte_axial_nach_chunk_radial(
+	radius: int, seite: HexSys.HEX_RICHTUNG, interpoliert: int,
+	radius_chunk: int,
+) -> Vector2i:
+	var ausgabe := Vector2i.ZERO
+	
+	ausgabe += erhalte_axial_nach_radial(2 * radius_chunk + 1, seite, radius_chunk) * radius
+	ausgabe += erhalte_axial_nach_radial(2 * radius_chunk + 1, seite + 2, radius_chunk) * interpoliert
+	
+	return ausgabe
+
+static func erhalte_axial_nach_chunk_kubial_mit_vektor(
+	kubial: Vector3i, radius_chunk: int,
+) -> Vector2i:
+	return erhalte_axial_nach_chunk_kubial(kubial.x, kubial.y, kubial.z, radius_chunk)
+static func erhalte_axial_nach_chunk_kubial(
+	obenhinten: int, hintenunten: int, vorne: int,
+	radius_chunk: int,
+) -> Vector2i:
+	var axial := HexSys.erhalte_axial_nach_kubial(obenhinten,hintenunten,vorne)
+	return HexSys.erhalte_axial_nach_chunk_axial_mit_vektor(axial,radius_chunk)
 
 #endregion
 #endregion
 #region Radial
+
+static func erhalte_radial_nach_euler_mit_vektor(euler: Vector3) -> Vector3i:
+	var axial := HexSys.erhalte_axial_nach_euler_mit_vektor(euler)
+	return HexSys.erhalte_radial_nach_axial_mit_vektor(axial)
 
 static func erhalte_radial_nach_axial_mit_vektor(axial: Vector2i) -> Vector3i:
 	return erhalte_radial_nach_axial(axial.x, axial.y)
@@ -322,15 +360,6 @@ static func erhalte_radial_nach_axial(linksoben: int, obenrechts: int) -> Vector
 	
 	return ausgabe
 
-static func erhalte_radial_nach_axial_von_mit_vektor(nach_axial: Vector2i, von_axial: Vector2i) -> Vector3i:
-	return erhalte_radial_nach_axial_mit_vektor(nach_axial - von_axial)
-static func erhalte_radial_nach_axial_von(
-	nach_linksoben: int, nach_obenrechts: int, 
-	von_linksoben: int, von_obenrechts: int,
-) -> Vector3i: return erhalte_radial_nach_axial(
-	nach_linksoben - von_linksoben, 
-	nach_obenrechts - von_obenrechts, )
-
 static func erhalte_radial_nach_kubial_mit_vektor(kubial: Vector3i) -> Vector3i:
 	return erhalte_radial_nach_kubial(kubial.x,kubial.y,kubial.z)
 static func erhalte_radial_nach_kubial(
@@ -340,6 +369,15 @@ static func erhalte_radial_nach_kubial(
 	# TODO
 	push_warning("Radial aus kubial ist nicht Implementiert")
 	return ausgabe
+
+static func erhalte_radial_nach_axial_von_mit_vektor(nach_axial: Vector2i, von_axial: Vector2i) -> Vector3i:
+	return erhalte_radial_nach_axial_mit_vektor(nach_axial - von_axial)
+static func erhalte_radial_nach_axial_von(
+	nach_linksoben: int, nach_obenrechts: int, 
+	von_linksoben: int, von_obenrechts: int,
+) -> Vector3i: return erhalte_radial_nach_axial(
+	nach_linksoben - von_linksoben, 
+	nach_obenrechts - von_obenrechts, )
 
 # TODO Euler
 

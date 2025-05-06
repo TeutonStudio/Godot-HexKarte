@@ -9,6 +9,7 @@ extends Node3D
 	get: 
 		if erzeuger: 
 			for each in _chunk_data: if _chunk_data[each]: _chunk_data[each].free()
+			for each in _natur_data: if _chunk_data[each]: _chunk_data[each].free()
 			_data = erzeuger.erzeuge_welt()
 		return self.notify_property_list_changed
 @export_tool_button("Neu vermaschen") var gen_masche: 
@@ -45,51 +46,6 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		if erzeuge: data = erzeuger.erzeuge_welt()
 #	if not Engine.is_editor_hint(): if _data: _data = data; return
-
-#func _enter_tree() -> void:
-	#if not Engine.is_editor_hint():
-		#if not _chunk_data and erzeuger and erzeuge: _erzeuge_karte()
-#
-#func _exit_tree() -> void:
-	#for each in _chunk_data: if _chunk_data[each]:
-		#_chunk_data[each].queue_free()
-
-func _process(delta: float) -> void:
-	if Engine.is_editor_hint(): debug_draw()
-
-func debug_draw() -> void:
-	if debug_kubial or debug_radial or debug_pfad_hexes or debug_pfad_location:
-		if _data: for each in _data.data.keys():
-			var hex := _data.erhalte_hex_nach_axial_global(each)
-			var höhe := hex.höhe
-			var pos_euler := HexSys.erhalte_euler_nach_axial_mit_vektor(each, höhe, hex_bibliothek.Hexagon_größe)
-			var pos_radial_lokal = _data.erhalte_hex_nach_axial_global(each).radial_lokal
-			
-			if debug_kubial:
-				DebugDraw3D.draw_text(pos_euler + Vector3.UP * 0.3, str(each), 48, Color.DIM_GRAY, 0)
-			if debug_radial:
-				DebugDraw3D.draw_text(pos_euler + Vector3.UP * 0.6, str(pos_radial_lokal), 48, Color.DIM_GRAY, 0)
-			
-			# Debug für Pfade, Flüsse und Wege
-			#if debug_pfad_hexes or debug_pfad_location: for pfad in erzeuger.pfade:
-				#if pfad is HexFluß: _draw_pfad_debug(pfad, Color.BLUE, debug_pfad_hexes, debug_pfad_location)
-				#elif pfad is HexWeg: _draw_pfad_debug(pfad, Color.BROWN, debug_pfad_hexes, debug_pfad_location)
-				#else: _draw_pfad_debug(pfad, Color.YELLOW, debug_pfad_hexes, debug_pfad_location)
-
-func _draw_pfad_debug(pfad: HexPfad, color: Color, draw_hexes: bool, draw_locations: bool) -> void:
-	if draw_hexes:
-		for hex in pfad.pfad_hexes:
-			if _data.existiert_hex_nach_axial_global(hex):
-				var höhe = _data.erhalte_hex_nach_axial_global(hex).höhe
-				var pos_euler = HexSys.erhalte_euler_nach_axial_mit_vektor(hex, höhe, hex_bibliothek.Hexagon_größe)
-				DebugDraw3D.draw_text(pos_euler + Vector3.UP * 0.9, "Hex", 48, color, 0)
-	if draw_locations:
-		for hex in pfad.betroffene:
-			if _data.existiert_hex_nach_axial_global(hex):
-				var höhe = _data.erhalte_hex_nach_axial_global(hex).höhe
-				var pos_euler = HexSys.erhalte_euler_nach_axial_mit_vektor(hex, höhe, hex_bibliothek.Hexagon_größe)
-				DebugDraw3D.draw_text(pos_euler + Vector3.UP * 1.2, "Loc", 48, color, 0)
-
 
 func _erzeuge_karte() -> void: if _data: HexSys.for_radial(_data.radius_welt, 
 	func(r: int, s: int, i: int) -> void: _erzeuge_chunk(r, s, i) )
@@ -263,14 +219,16 @@ func _konstruiere_natur(radial_chunk: Vector3i) -> ArrayMesh:
 		if not _data.existiert_hex_nach_axial_global(axial_global): 
 			protokoll["hexabfrage"].append(axial_global)
 			return
-	
+		
 		var hex := _data.erhalte_hex_nach_axial_global(axial_global)
 		var hex_variante := hex.variante
 		var hex_pos_höhe := hex.höhe
 		var euler_lokal := HexSys.erhalte_euler_nach_radial_mit_vektor(radial_lokal,hex_bibliothek.Hexagon_größe,hex_pos_höhe)
 		
 		if hex.natur.has(Hex.NATUR.Wald):
-			surface_tool.append_from(hex_bibliothek.natur_wald_b3,0,Transform3D(Basis.IDENTITY,euler_lokal))
+			var masche := hex_bibliothek.natur_wald_b3 if hex.natur_abgewirtschaftet else hex_bibliothek.natur_lichtung_b3
+			var trans := Transform3D(Basis.IDENTITY,euler_lokal)
+			surface_tool.append_from(masche,0,trans)
 	)
 	
 	return surface_tool.commit()
