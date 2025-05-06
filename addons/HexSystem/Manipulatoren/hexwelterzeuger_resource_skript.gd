@@ -37,14 +37,14 @@ func _höhenkarte_anwenden(welt: HexWelt) -> void:
 func _wälder_anwenden(welt: HexWelt) -> void:
 	for axial in welt.data.keys():
 		var hex := welt.erhalte_hex_nach_axial_global(axial)
-		var verschiebung := 15
+		var schwelle := .2
 		var chunk_radial := hex.radial_chunk
 		var lokal_radial := hex.radial_lokal
 		var euler_pos = HexSys.erhalte_euler_nach_axial_mit_vektor(axial)
 		var rauschwert := höhenkarte.noise.get_noise_2d(euler_pos.x, euler_pos.z)
-		var höhe: int = max(0,abs(rauschwert * (maximale_höhe + verschiebung)) - verschiebung)
 		
-		hex.natur.append(Hex.NATUR.Wald)
+		if rauschwert > schwelle:
+			hex.natur.append(Hex.NATUR.Wald)
 
 func _manipulatoren_anwenden(welt: HexWelt) -> void:
 	for axial_global in welt.data.keys():

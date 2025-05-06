@@ -21,7 +21,7 @@ func _get_property_list() -> Array[Dictionary]:
 func _get(eigenschaft: StringName) -> Variant:
 	var struktur := eigenschaft.split("/")
 	
-	if struktur.size() == 2:
+	if struktur.size() == 2: if hex:
 		return hex.get(struktur[1])
 	
 	return
@@ -57,7 +57,7 @@ func _erhalte_Koordinaten_eigenschaften() -> Array[Dictionary]:
 	return ausgabe
 
 func setze_hex_nach_global( erstes: String, global: Variant ) -> bool:
-	if erstes == "axial":
+	if erstes == "axial": if global is Vector2i:
 		hex = hex_karte.data.erhalte_hex_nach_axial_global(global as Vector2i)
 		return true
 	if erstes == "radial": push_warning("Nicht implementiert")
