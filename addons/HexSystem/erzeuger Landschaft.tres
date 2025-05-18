@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="HexWeltErzeuger" load_steps=5 format=3 uid="uid://pewf16bar1jw"]
+
+[ext_resource type="Script" uid="uid://2suni00airad" path="res://addons/HexSystem/Skripte/Manipulatoren/hexpfad_resource_skript.gd" id="1_lu7bv"]
+[ext_resource type="Script" uid="uid://blfvavmgj5gfy" path="res://addons/HexSystem/Skripte/Manipulatoren/hexwelterzeuger_resource_skript.gd" id="2_8wbuk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lu7bv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8wbuk"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_lu7bv")
+
+[resource]
+script = ExtResource("2_8wbuk")
+welt_radius = 5
+chunk_radius = 3
+"maximale_höhe" = 250
+"höhenkarte" = SubResource("NoiseTexture2D_8wbuk")
+"flüße" = Array[ExtResource("1_lu7bv")]([])
+wege = Array[ExtResource("1_lu7bv")]([])
+metadata/_custom_type_script = "uid://blfvavmgj5gfy"

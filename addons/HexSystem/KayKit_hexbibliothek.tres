@@ -1,0 +1,421 @@
+[gd_resource type="Resource" script_class="HexBibliothek" load_steps=49 format=3 uid="uid://1hd32igwxrf4"]
+
+[ext_resource type="Script" uid="uid://dsg1go3m1m878" path="res://addons/HexSystem/Skripte/Hexagon teile/hexagon_masche_skript.gd" id="1_3lkth"]
+[ext_resource type="ArrayMesh" uid="uid://bd40ot4vty6v0" path="res://addons/HexSystem/Maschen/ebene_wasser.mesh" id="2_whq15"]
+[ext_resource type="ArrayMesh" uid="uid://bxopkg64mn0vy" path="res://addons/HexSystem/Maschen/ebene_gras.mesh" id="3_6ism8"]
+[ext_resource type="Script" uid="uid://bb7g4flvs55qq" path="res://addons/HexSystem/Skripte/Hexagon teile/hex_ebene_resource_skript.gd" id="3_whikg"]
+[ext_resource type="ArrayMesh" uid="uid://do0wivxypp13d" path="res://addons/HexSystem/Maschen/seite/seite_gras.mesh" id="5_lq547"]
+[ext_resource type="ArrayMesh" uid="uid://rqjqe4quqidh" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_0.mesh" id="6_ygwua"]
+[ext_resource type="ArrayMesh" uid="uid://syn40lsejs28" path="res://addons/HexSystem/Maschen/seite/seite_gras_untergrund.mesh" id="7_lk5ra"]
+[ext_resource type="ArrayMesh" uid="uid://c4b4o7cl5sys6" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_1.mesh" id="7_rly38"]
+[ext_resource type="ArrayMesh" uid="uid://cqqossh0fk2mq" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_2.mesh" id="8_bvjgg"]
+[ext_resource type="ArrayMesh" uid="uid://np4inv30flj8" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_3.mesh" id="9_1pcwc"]
+[ext_resource type="ArrayMesh" uid="uid://cdkvwicc4pk0v" path="res://addons/HexSystem/Maschen/ebene_küste/ebene_küste_4.mesh" id="10_1aky7"]
+[ext_resource type="ArrayMesh" uid="uid://bl3o57hst6xjw" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_a.mesh" id="11_5erbe"]
+[ext_resource type="ArrayMesh" uid="uid://c3rrot0wadtoa" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_b.mesh" id="12_l25qe"]
+[ext_resource type="ArrayMesh" uid="uid://da78tons37l1h" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_c.mesh" id="13_tgqee"]
+[ext_resource type="ArrayMesh" uid="uid://dkyfm1eiqa8go" path="res://addons/HexSystem/Maschen/seite/seite_weg.mesh" id="14_k68bw"]
+[ext_resource type="Script" uid="uid://dq7bu8g1ndg3s" path="res://addons/HexSystem/Skripte/Hexagon teile/hex_seite_resource_skript.gd" id="15_0680j"]
+[ext_resource type="ArrayMesh" uid="uid://c3wtlap78uyl0" path="res://addons/HexSystem/Maschen/seite/seite_weg_untergrund.mesh" id="15_rn0tx"]
+[ext_resource type="ArrayMesh" uid="uid://bucnbor0pip8p" path="res://addons/HexSystem/Maschen/seite/seite_fluß.mesh" id="19_ypvet"]
+[ext_resource type="ArrayMesh" uid="uid://dt3e57t1wh0jg" path="res://addons/HexSystem/Maschen/seite/seite_fluß_untergrund.mesh" id="20_mihm5"]
+[ext_resource type="ArrayMesh" uid="uid://ddmwgqescupoq" path="res://addons/HexSystem/Maschen/ebene_fluß/ebene_fluß_m.mesh" id="23_e6fqg"]
+[ext_resource type="Material" uid="uid://viyrt8m68psc" path="res://addons/HexSystem/Materialien/hex_kaykit_material.tres" id="25_3ew62"]
+[ext_resource type="Script" uid="uid://cwghc5f5qy4av" path="res://addons/HexSystem/Skripte/hexbibliothek_resource_skript.gd" id="30_wncn5"]
+[ext_resource type="ArrayMesh" uid="uid://gyhhjesxbeva" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_a.mesh" id="35_tdsx3"]
+[ext_resource type="ArrayMesh" uid="uid://bsxdif1nmaqu6" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_b.mesh" id="36_chp70"]
+[ext_resource type="ArrayMesh" uid="uid://cb0iqc5t71qwg" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_c.mesh" id="37_lfgoq"]
+[ext_resource type="ArrayMesh" uid="uid://3ddrqabor4w4" path="res://addons/HexSystem/Maschen/ebene_weg/ebene_weg_m.mesh" id="48_kq1gc"]
+
+[sub_resource type="Resource" id="Resource_56oju"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("2_whq15")
+_seiten = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0
+})
+filter/linksoben = 0
+filter/oben = 0
+filter/rechtsoben = 0
+filter/rechtsunten = 0
+filter/unten = 0
+filter/linksunten = 0
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_uqlvt"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("3_6ism8")
+_seiten = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 1,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 1
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_0nkrg"]
+script = ExtResource("15_0680j")
+variante = 0
+art = 2
+masche = ExtResource("5_lq547")
+_seiten = Dictionary[int, int]({
+1: 1
+})
+filter/nebenan = 1
+metadata/_custom_type_script = "uid://dq7bu8g1ndg3s"
+
+[sub_resource type="Resource" id="Resource_rvypr"]
+script = ExtResource("15_0680j")
+variante = 1
+art = 3
+masche = ExtResource("7_lk5ra")
+_seiten = Dictionary[int, int]({
+1: 1
+})
+filter/nebenan = 1
+metadata/_custom_type_script = "uid://dq7bu8g1ndg3s"
+
+[sub_resource type="Resource" id="Resource_f1raf"]
+script = ExtResource("1_3lkth")
+art = 1
+masche = ExtResource("35_tdsx3")
+_seiten = Dictionary[int, int]({
+0: 4,
+1: 1,
+2: 1,
+3: 4,
+4: 1,
+5: 1
+})
+filter/linksoben = 4
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 4
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://dsg1go3m1m878"
+
+[sub_resource type="Resource" id="Resource_6bjoo"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("6_ygwua")
+_seiten = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 1,
+3: 1,
+4: 2,
+5: 2
+})
+filter/linksoben = 1
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 1
+filter/unten = 2
+filter/linksunten = 2
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_1hele"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("7_rly38")
+_seiten = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 1,
+3: 2,
+4: 0,
+5: 2
+})
+filter/linksoben = 1
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 2
+filter/unten = 0
+filter/linksunten = 2
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_584k7"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("8_bvjgg")
+_seiten = Dictionary[int, int]({
+0: 2,
+1: 1,
+2: 1,
+3: 2,
+4: 0,
+5: 0
+})
+filter/linksoben = 2
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 2
+filter/unten = 0
+filter/linksunten = 0
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_lq547"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("9_1pcwc")
+_seiten = Dictionary[int, int]({
+0: 2,
+1: 1,
+2: 2,
+3: 0,
+4: 0,
+5: 0
+})
+filter/linksoben = 2
+filter/oben = 1
+filter/rechtsoben = 2
+filter/rechtsunten = 0
+filter/unten = 0
+filter/linksunten = 0
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_lk5ra"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("10_1aky7")
+_seiten = Dictionary[int, int]({
+0: 2,
+1: 2,
+2: 0,
+3: 0,
+4: 0,
+5: 0
+})
+filter/linksoben = 2
+filter/oben = 2
+filter/rechtsoben = 0
+filter/rechtsunten = 0
+filter/unten = 0
+filter/linksunten = 0
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_k68bw"]
+script = ExtResource("15_0680j")
+variante = 0
+art = 2
+masche = ExtResource("14_k68bw")
+_seiten = Dictionary[int, int]({
+1: 4
+})
+filter/nebenan = 4
+metadata/_custom_type_script = "uid://dq7bu8g1ndg3s"
+
+[sub_resource type="Resource" id="Resource_rn0tx"]
+script = ExtResource("15_0680j")
+variante = 1
+art = 3
+masche = ExtResource("15_rn0tx")
+_seiten = Dictionary[int, int]({
+1: 4
+})
+filter/nebenan = 4
+metadata/_custom_type_script = "uid://dq7bu8g1ndg3s"
+
+[sub_resource type="Resource" id="Resource_wne3n"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("48_kq1gc")
+_seiten = Dictionary[int, int]({
+0: 4,
+1: 1,
+2: 1,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 4
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_ypvet"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("35_tdsx3")
+_seiten = Dictionary[int, int]({
+0: 4,
+1: 1,
+2: 1,
+3: 4,
+4: 1,
+5: 1
+})
+filter/linksoben = 4
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 4
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_mihm5"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("36_chp70")
+_seiten = Dictionary[int, int]({
+0: 4,
+1: 1,
+2: 4,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 4
+filter/oben = 1
+filter/rechtsoben = 4
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_kkpwr"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("37_lfgoq")
+_seiten = Dictionary[int, int]({
+0: 4,
+1: 4,
+2: 1,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 4
+filter/oben = 4
+filter/rechtsoben = 1
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_sanjh"]
+script = ExtResource("15_0680j")
+variante = 0
+art = 2
+masche = ExtResource("19_ypvet")
+_seiten = Dictionary[int, int]({
+1: 3
+})
+filter/nebenan = 3
+metadata/_custom_type_script = "uid://dq7bu8g1ndg3s"
+
+[sub_resource type="Resource" id="Resource_0pdi4"]
+script = ExtResource("15_0680j")
+variante = 0
+art = 2
+masche = ExtResource("20_mihm5")
+_seiten = Dictionary[int, int]({
+1: 3
+})
+filter/nebenan = 3
+metadata/_custom_type_script = "uid://dq7bu8g1ndg3s"
+
+[sub_resource type="Resource" id="Resource_s3h8i"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("23_e6fqg")
+_seiten = Dictionary[int, int]({
+0: 3,
+1: 1,
+2: 1,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 3
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_68pch"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("11_5erbe")
+_seiten = Dictionary[int, int]({
+0: 3,
+1: 1,
+2: 1,
+3: 3,
+4: 1,
+5: 1
+})
+filter/linksoben = 3
+filter/oben = 1
+filter/rechtsoben = 1
+filter/rechtsunten = 3
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_utu7t"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("12_l25qe")
+_seiten = Dictionary[int, int]({
+0: 3,
+1: 1,
+2: 3,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 3
+filter/oben = 1
+filter/rechtsoben = 3
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[sub_resource type="Resource" id="Resource_7qiey"]
+script = ExtResource("3_whikg")
+art = 1
+masche = ExtResource("13_tgqee")
+_seiten = Dictionary[int, int]({
+0: 3,
+1: 3,
+2: 1,
+3: 1,
+4: 1,
+5: 1
+})
+filter/linksoben = 3
+filter/oben = 3
+filter/rechtsoben = 1
+filter/rechtsunten = 1
+filter/unten = 1
+filter/linksunten = 1
+metadata/_custom_type_script = "uid://bb7g4flvs55qq"
+
+[resource]
+script = ExtResource("30_wncn5")
+material = ExtResource("25_3ew62")
+hexagon_breite = 2.0
+data = Array[ExtResource("1_3lkth")]([SubResource("Resource_56oju"), SubResource("Resource_uqlvt"), SubResource("Resource_0nkrg"), SubResource("Resource_rvypr"), SubResource("Resource_f1raf"), SubResource("Resource_6bjoo"), SubResource("Resource_1hele"), SubResource("Resource_584k7"), SubResource("Resource_lq547"), SubResource("Resource_lk5ra"), SubResource("Resource_k68bw"), SubResource("Resource_rn0tx"), SubResource("Resource_wne3n"), SubResource("Resource_ypvet"), SubResource("Resource_mihm5"), SubResource("Resource_kkpwr"), SubResource("Resource_sanjh"), SubResource("Resource_0pdi4"), SubResource("Resource_s3h8i"), SubResource("Resource_68pch"), SubResource("Resource_utu7t"), SubResource("Resource_7qiey")])
+metadata/_custom_type_script = "uid://cwghc5f5qy4av"
