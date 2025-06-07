@@ -1,2 +1,2 @@
 # Godot-HexKarte
-Implementiert die HexKarte3D in Godot
+Implementiert die HexKarte in Godot
